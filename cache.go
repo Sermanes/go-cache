@@ -60,6 +60,10 @@ func (c *Cache) Delete(key string) {
 }
 
 func (c *Cache) Clear() {
+	c.Flush()
+}
+
+func (c *Cache) Flush() {
 	c.mu.Lock()
 	defer c.mu.Unlock()
 	c.store = make(map[string]any)
